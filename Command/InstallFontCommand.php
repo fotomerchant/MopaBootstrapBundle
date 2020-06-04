@@ -50,7 +50,7 @@ EOT
     /**
      * {@inheritdoc}
      */
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $finder = new Finder();
 
@@ -83,6 +83,7 @@ EOT
         }
 
         $output->writeln('Font: '.$iconSet.' Installed... <info>OK</info>');
+        return 0;
     }
 
     public static function installFonts()

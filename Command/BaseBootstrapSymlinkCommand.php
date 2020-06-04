@@ -146,7 +146,7 @@ abstract class BaseBootstrapSymlinkCommand extends ContainerAwareCommand
     /**
      * {@inheritdoc}
      */
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $this->input = $input;
         $this->output = $output;
@@ -168,7 +168,7 @@ abstract class BaseBootstrapSymlinkCommand extends ContainerAwareCommand
         } else {
             $this->output->writeln('<error>Could not find composer and manual option not specified!</error>');
 
-            return;
+            return 0;
         }
 
         // Automatically detect if on Win XP where symlink will allways fail
@@ -194,6 +194,7 @@ abstract class BaseBootstrapSymlinkCommand extends ContainerAwareCommand
         }
 
         $this->output->writeln(' ... <info>OK</info>');
+        return 0;
     }
 
     protected function getBootstrapPathsFromUser()
